@@ -1,5 +1,5 @@
 
-// Theme Toggle Logic
+// Theme Toggle 
 const ThemeToggle = document.getElementById('ThemeToggle');
 const Body = document.body;
 
