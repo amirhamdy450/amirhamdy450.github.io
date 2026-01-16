@@ -39,6 +39,7 @@ body {
 
 /* Utilities */
 .Container {
+    /* Force full width inside flex parents */
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--SpacingLg);
@@ -379,47 +380,33 @@ body.LightTheme #MainHeader {
     transform: translateY(-5px);
 }
 
-/* Contact Form - Minimalist with Animations */
+#Contact .Container {
+    width: 100%;
+}
+
+/* Contact Form */
 #ContactForm {
-    max-width: 700px;
+    max-width: 500px;
+    width: 100%;
     margin: 0 auto;
     padding: var(--SpacingLg) 0;
     background: transparent;
 }
 
+/* Modern Glass Inputs */
 .FormGroup {
-    margin-bottom: var(--SpacingXl);
-    position: relative;
-    /* Create the animated line container */
-}
-
-/* Animated Underline for Inputs */
-.FormGroup::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: var(--PrimaryColor);
-    transition: width 0.4s ease;
-    z-index: 10;
-}
-
-.FormGroup:focus-within::after {
-    width: 100%;
-    /* Expand line on focus */
+    margin-bottom: var(--SpacingLg);
 }
 
 .FormLabel {
     display: block;
-    margin-bottom: var(--SpacingSm);
+    margin-bottom: 8px;
     color: var(--TextSecondary);
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 0.9rem;
+    font-weight: 600;
     transition: color 0.3s ease;
+    margin-left: 5px;
+    /* Align slightly inside */
 }
 
 .FormGroup:focus-within .FormLabel {
@@ -428,55 +415,74 @@ body.LightTheme #MainHeader {
 
 .FormInput {
     width: 100%;
-    padding: 15px 0;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid var(--SurfaceColor);
-    /* Base line */
-    border-radius: 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     color: var(--TextColor);
     font-family: inherit;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 500;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .FormInput::placeholder {
-    color: transparent;
-    /* Cleaner look, rely on labels */
-}
-
-/* Optional: Show placeholder on focus if needed, or remove completely */
-.FormInput:focus::placeholder {
-    color: var(--TextSecondary);
-    opacity: 0.5;
+    color: rgba(255, 255, 255, 0.2);
 }
 
 .FormInput:focus {
     outline: none;
-    /* We use the ::after for the color, so transparent here or keep base */
-    border-bottom-color: transparent;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--AccentColor);
+    box-shadow: 0 0 20px rgba(124, 77, 255, 0.15);
+    /* Soft Glow */
+    transform: translateY(-2px);
 }
 
-/* Specifics for Textarea to handle the 'Box' look differently */
 textarea.FormInput {
-    resize: vertical;
-    min-height: 120px;
-    border: 1px solid var(--SurfaceColor);
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: -2px;
-    /* Fix gap for ::after alignment if needed */
+    resize: none;
+    min-height: 140px;
+    height: 140px;
+    overflow-y: auto;
 }
 
-/* For textarea, the line animation is a bit weird, let's do a glow instead */
-.FormGroup:has(textarea)::after {
+/* Custom Scrollbar for Textarea */
+textarea.FormInput::-webkit-scrollbar {
+    width: 6px;
+}
+
+textarea.FormInput::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+textarea.FormInput::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+textarea.FormInput::-webkit-scrollbar-thumb:hover {
+    background-color: var(--PrimaryColor);
+}
+
+/* Light Theme Scrollbar */
+body.LightTheme textarea.FormInput::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Cleanup old styles */
+.FormGroup::after,
+.FormGroup:focus-within::after {
     display: none;
-    /* Disable line for textarea */
 }
 
-textarea.FormInput:focus {
-    border-color: var(--PrimaryColor);
+/* Light Mode Overrides */
+body.LightTheme .FormInput {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.LightTheme .FormInput:focus {
+    background: rgba(0, 0, 0, 0.05);
 }
 
 /* Make the button full width and large */
@@ -769,11 +775,37 @@ body.LightTheme .ModalContent {
 
     #NavLinks {
         display: none;
+    }
 
-        /* Mobile menu implementation needed if requested */
-        .SkillsWrapper {
-            grid-template-columns: 1fr;
-            gap: var(--SpacingLg);
-        }
+    .SkillsWrapper {
+        grid-template-columns: 1fr;
+        gap: var(--SpacingLg);
+    }
+
+    .Container {
+        padding: 0 20px;
+    }
+
+    .HeroTitle {
+        font-size: 2.2rem;
+    }
+
+    .Timeline {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .Timeline::before {
+        left: 10px;
+        /* Move line closer to edge */
+    }
+
+    .TimelineItem {
+        padding-left: 40px;
+        margin-bottom: 30px;
+    }
+
+    .TimelineItem::before {
+        left: 0px;
     }
 }
