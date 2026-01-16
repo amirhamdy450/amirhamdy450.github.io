@@ -809,3 +809,27 @@ body.LightTheme .ModalContent {
         left: 0px;
     }
 }
+
+/* Ultra-Small Screens (<400px) */
+@media (max-width: 400px) {
+    .HeroTitle {
+        font-size: 1.8rem;
+    }
+
+    .SectionTitle {
+        font-size: 1.8rem;
+    }
+
+    #Logo {
+        font-size: 1.2rem;
+    }
+
+    .Container {
+        padding: 0 15px;
+    }
+
+    .TimelineItem {
+        padding-left: 30px;
+        /* More space for text */
+    }
+}
