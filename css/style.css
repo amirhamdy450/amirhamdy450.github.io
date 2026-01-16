@@ -769,6 +769,11 @@ body.LightTheme .ModalContent {
         height: 300px;
     }
 
+    #MainHeader {
+
+        padding: var(--SpacingSm) 0;
+    }
+
     #NavBar {
         padding: var(--SpacingSm);
     }
@@ -808,10 +813,19 @@ body.LightTheme .ModalContent {
     .TimelineItem::before {
         left: 0px;
     }
+
+
 }
 
 /* Ultra-Small Screens (<400px) */
 @media (max-width: 400px) {
+
+
+    #MainHeader {
+
+        padding: var(--SpacingSm) 0;
+    }
+
     .HeroTitle {
         font-size: 1.8rem;
     }
@@ -830,6 +844,9 @@ body.LightTheme .ModalContent {
 
     .TimelineItem {
         padding-left: 30px;
-        /* More space for text */
+    }
+
+    #ContactForm {
+        max-width: 288px;
     }
 }
