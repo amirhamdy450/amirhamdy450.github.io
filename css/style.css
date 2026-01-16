@@ -1,0 +1,779 @@
+:root {
+    --BgColor: #0a0a0a;
+    --SurfaceColor: #1a1a1a;
+    --TextColor: #e0e0e0;
+    --TextSecondary: #a0a0a0;
+    --PrimaryColor: #48b1f1;
+    --AccentColor: #6ee1c7;
+    --SpacingSm: 0.5rem;
+    --SpacingMd: 1rem;
+    --SpacingLg: 2rem;
+    --SpacingXl: 4rem;
+    --FontMain: 'Outfit', sans-serif;
+}
+
+/* Light Theme overrides */
+body.LightTheme {
+    --BgColor: #ffffff;
+    --SurfaceColor: #f5f5f5;
+    --TextColor: #1a1a1a;
+    --TextSecondary: #666666;
+    --PrimaryColor: #4979cc;
+    --AccentColor: #00b0ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--BgColor);
+    color: var(--TextColor);
+    font-family: var(--FontMain);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* Utilities */
+.Container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--SpacingLg);
+}
+
+.Btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-family: var(--FontMain);
+}
+
+.PrimaryBtn {
+    background: linear-gradient(135deg, var(--PrimaryColor), var(--AccentColor));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(124, 77, 255, 0.4);
+}
+
+.PrimaryBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 77, 255, 0.6);
+}
+
+.SecondaryBtn {
+    background: transparent;
+    border: 2px solid var(--PrimaryColor);
+    color: var(--TextColor);
+    margin-left: var(--SpacingMd);
+}
+
+.SecondaryBtn:hover {
+    background: var(--PrimaryColor);
+    color: #fff;
+}
+
+/* Header & Nav */
+#MainHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: var(--SpacingMd) 0;
+}
+
+body.LightTheme #MainHeader {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#NavBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--SpacingLg);
+}
+
+#Logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--TextColor);
+    background: linear-gradient(to right, var(--PrimaryColor), var(--AccentColor));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#NavLinks {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: var(--SpacingLg);
+}
+
+.NavLink {
+    color: var(--TextColor);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+}
+
+.NavLink::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--AccentColor);
+    transition: width 0.3s ease;
+}
+
+.NavLink:hover::after {
+    width: 100%;
+}
+
+#ThemeToggle {
+    background: none;
+    border: 2px solid var(--TextSecondary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: var(--TextColor);
+    margin-left: var(--SpacingMd);
+}
+
+#ThemeToggle:hover {
+    border-color: var(--AccentColor);
+    color: var(--AccentColor);
+}
+
+/* Sections General */
+.Section {
+    padding: 100px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.SectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: var(--SpacingXl);
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.SectionTitle::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--AccentColor);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Hero Section */
+#Hero {
+    position: relative;
+    /* Taller hero */
+    min-height: 90vh;
+    padding-top: 100px;
+    overflow: hidden;
+    /* Subtle premium background glow */
+    background: radial-gradient(circle at 80% 20%, rgba(124, 77, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(124, 77, 255, 0.1) 0%, transparent 40%);
+}
+
+#Hero .Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: var(--SpacingXl);
+    /* Added gap for separation */
+}
+
+.HeroContent {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.HeroTitle {
+    font-size: 3.5rem;
+    /* Larger font */
+    font-weight: 700;
+    margin-bottom: var(--SpacingSm);
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.HeroTitle .Highlight {
+    background: linear-gradient(135deg, var(--PrimaryColor), var(--AccentColor));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    filter: drop-shadow(0 0 30px rgba(124, 77, 255, 0.3));
+    /* Glow effect */
+}
+
+.HeroSubtitle {
+    font-size: 1.5rem;
+    color: var(--TextSecondary);
+    margin-bottom: var(--SpacingMd);
+    font-weight: 400;
+}
+
+.HeroDescription {
+    margin-bottom: var(--SpacingLg);
+    color: var(--TextSecondary);
+    max-width: 500px;
+}
+
+/* Interests Section within About */
+.Interests {
+    margin-top: var(--SpacingLg);
+    padding-top: var(--SpacingMd);
+    border-top: 1px solid var(--SurfaceColor);
+}
+
+.Interests h3 {
+    font-size: 1.2rem;
+    color: var(--PrimaryColor);
+    margin-bottom: var(--SpacingMd);
+}
+
+.InterestsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.InterestsList span {
+    background: var(--SurfaceColor);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--TextSecondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.InterestsList span:hover {
+    border-color: var(--AccentColor);
+    color: var(--TextColor);
+    transform: translateY(-2px);
+}
+
+/* Timeline / Experience */
+.Timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.Timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--SurfaceColor);
+}
+
+.TimelineItem {
+    margin-bottom: var(--SpacingXl);
+    position: relative;
+    padding-left: 60px;
+}
+
+.TimelineItem::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--PrimaryColor);
+    border: 4px solid var(--BgColor);
+    z-index: 10;
+}
+
+.TimelineDate {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--SurfaceColor);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--AccentColor);
+    margin-bottom: var(--SpacingSm);
+}
+
+/* Skills */
+.SkillsWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--SpacingXl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.SkillCategory {
+    margin-bottom: 0;
+}
+
+.SkillCategoryTitle {
+    font-size: 1.1rem;
+    color: var(--AccentColor);
+    margin-bottom: var(--SpacingMd);
+    text-align: left;
+    /* Align with chips */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.SkillsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+    margin-bottom: var(--SpacingLg);
+}
+
+.SkillCard {
+    background: var(--SurfaceColor);
+    padding: 10px 20px;
+    border-radius: 8px;
+    /* Slightly squarer for tags */
+    text-align: center;
+    border: 1px solid transparent;
+    /* Prepare for border hover */
+    transition: all 0.3s ease;
+    flex: 0 1 auto;
+    /* Don't stretch */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.SkillCard:hover {
+    border-color: var(--PrimaryColor);
+    transform: translateY(-5px);
+}
+
+/* Contact Form - Minimalist with Animations */
+#ContactForm {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--SpacingLg) 0;
+    background: transparent;
+}
+
+.FormGroup {
+    margin-bottom: var(--SpacingXl);
+    position: relative;
+    /* Create the animated line container */
+}
+
+/* Animated Underline for Inputs */
+.FormGroup::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--PrimaryColor);
+    transition: width 0.4s ease;
+    z-index: 10;
+}
+
+.FormGroup:focus-within::after {
+    width: 100%;
+    /* Expand line on focus */
+}
+
+.FormLabel {
+    display: block;
+    margin-bottom: var(--SpacingSm);
+    color: var(--TextSecondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.FormGroup:focus-within .FormLabel {
+    color: var(--PrimaryColor);
+}
+
+.FormInput {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--SurfaceColor);
+    /* Base line */
+    border-radius: 0;
+    color: var(--TextColor);
+    font-family: inherit;
+    font-size: 1.25rem;
+    font-weight: 500;
+    transition: border-color 0.3s ease;
+}
+
+.FormInput::placeholder {
+    color: transparent;
+    /* Cleaner look, rely on labels */
+}
+
+/* Optional: Show placeholder on focus if needed, or remove completely */
+.FormInput:focus::placeholder {
+    color: var(--TextSecondary);
+    opacity: 0.5;
+}
+
+.FormInput:focus {
+    outline: none;
+    /* We use the ::after for the color, so transparent here or keep base */
+    border-bottom-color: transparent;
+}
+
+/* Specifics for Textarea to handle the 'Box' look differently */
+textarea.FormInput {
+    resize: vertical;
+    min-height: 120px;
+    border: 1px solid var(--SurfaceColor);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: -2px;
+    /* Fix gap for ::after alignment if needed */
+}
+
+/* For textarea, the line animation is a bit weird, let's do a glow instead */
+.FormGroup:has(textarea)::after {
+    display: none;
+    /* Disable line for textarea */
+}
+
+textarea.FormInput:focus {
+    border-color: var(--PrimaryColor);
+}
+
+/* Make the button full width and large */
+#ContactForm .Btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-top: var(--SpacingMd);
+}
+
+/* Footer */
+#Footer {
+    padding: var(--SpacingLg) 0;
+    text-align: center;
+    border-top: 1px solid var(--SurfaceColor);
+    color: var(--TextSecondary);
+}
+
+/* Scroll Animations */
+.Hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.Show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Advanced Animations */
+@keyframes Float {
+    0% {
+        transform: translateY(0px) perspective(1000px) rotateY(-5deg);
+    }
+
+    50% {
+        transform: translateY(-15px) perspective(1000px) rotateY(-5deg);
+    }
+
+    100% {
+        transform: translateY(0px) perspective(1000px) rotateY(-5deg);
+    }
+}
+
+.ProfileImageWrapper {
+    width: 350px;
+    /* Slightly larger */
+    height: 400px;
+    /* Portrait aspect ratio */
+    border-radius: 20px;
+    /* Clean rounded corners */
+    overflow: hidden;
+    /* Glassmorphism border */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        /* Deep shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        /* Inner stroke */
+        0 0 60px rgba(124, 77, 255, 0.15);
+    /* Outer glow */
+    position: relative;
+    transform: perspective(1000px) rotateY(-5deg);
+    /* Subtle 3D tilt */
+    transition: transform 0.5s ease;
+    animation: Float 6s ease-in-out infinite;
+}
+
+.ProfileImageWrapper:hover {
+    transform: perspective(1000px) rotateY(0deg) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(124, 77, 255, 0.2);
+    animation-play-state: paused;
+}
+
+.ProfileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Experience List */
+.ExperienceList {
+    list-style-type: none;
+    margin-top: var(--SpacingSm);
+}
+
+.ExperienceList li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.ExperienceList li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--AccentColor);
+}
+
+/* Projects Section */
+.ProjectsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--SpacingLg);
+}
+
+.ProjectCard {
+    background: var(--SurfaceColor);
+    padding: var(--SpacingLg);
+    border-radius: 15px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.ProjectCard:hover {
+    transform: translateY(-10px);
+    border-color: var(--AccentColor);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ProjectTitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--SpacingSm);
+    color: var(--PrimaryColor);
+}
+
+.ProjectDesc {
+    color: var(--TextSecondary);
+    margin-bottom: var(--SpacingMd);
+    font-size: 0.95rem;
+}
+
+.ProjectTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.Tag {
+    background: rgb(143 143 143 / 10%);
+    color: var(--PrimaryColor);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+
+.LightTheme .Tag {
+    background: rgb(89 89 89 / 10%);
+}
+
+
+/* Typing Effect Cursor */
+.TypingCursor::after {
+    content: '|';
+    animation: Blink 1s step-start infinite;
+    color: var(--AccentColor);
+}
+
+@keyframes Blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Email Modal */
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.Modal.Active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ModalContent {
+    background: var(--SurfaceColor);
+    padding: var(--SpacingXl);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.Modal.Active .ModalContent {
+    transform: scale(1);
+}
+
+.ModalIconWrapper {
+    margin-bottom: var(--SpacingMd);
+    display: flex;
+    justify-content: center;
+}
+
+.StatusIcon {
+    width: 64px;
+    height: 64px;
+    stroke: var(--AccentColor);
+    display: none;
+    /* Hidden by default */
+}
+
+.StatusIcon.Active {
+    display: block;
+    animation: IconPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#ErrorIcon {
+    stroke: #ff4d4d;
+}
+
+@keyframes IconPop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#ModalTitle {
+    font-size: 1.5rem;
+    color: var(--PrimaryColor);
+    margin-bottom: var(--SpacingSm);
+}
+
+#ModalMessage {
+    color: var(--TextSecondary);
+    margin-bottom: var(--SpacingLg);
+    line-height: 1.5;
+}
+
+/* Light Mode Overrides for Modal */
+body.LightTheme .ModalContent {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    #Hero .Container {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: var(--SpacingLg);
+    }
+
+    .HeroContent {
+        max-width: 100%;
+    }
+
+    .HeroTitle {
+        font-size: 2.5rem;
+    }
+
+    .ProfileImageWrapper {
+        width: 250px;
+        height: 300px;
+    }
+
+    #NavBar {
+        padding: var(--SpacingSm);
+    }
+
+    #NavLinks {
+        display: none;
+
+        /* Mobile menu implementation needed if requested */
+        .SkillsWrapper {
+            grid-template-columns: 1fr;
+            gap: var(--SpacingLg);
+        }
+    }
+}

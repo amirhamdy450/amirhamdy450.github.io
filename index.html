@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+
+<body class="DarkTheme">
+
+    <header id="MainHeader">
+        <nav id="NavBar">
+            <div id="Logo">Portfolio.</div>
+            <ul id="NavLinks">
+                <li><a href="#Hero" class="NavLink">Home</a></li>
+                <li><a href="#About" class="NavLink">About</a></li>
+                <li><a href="#Experience" class="NavLink">Experience</a></li>
+                <li><a href="#Skills" class="NavLink">Skills</a></li>
+                <li><a href="#Contact" class="NavLink">Contact</a></li>
+            </ul>
+            <button id="ThemeToggle" class="Btn">
+                <span class="Icon">☀</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="Hero" class="Section">
+            <div class="Container">
+                <div class="HeroContent">
+                    <h1 class="HeroTitle">Hello, I'm <span class="Highlight">Amir Amgad</span></h1>
+                    <h2 class="HeroSubtitle">Full Stack Web Developer</h2>
+                    <p class="HeroDescription">A passionate Full Stack Developer specializing in modern web
+                        technologies. Eager to build dynamic, responsive, and scalable web applications.</p>
+                    <div class="HeroButtons">
+                        <a href="#Contact" class="Btn PrimaryBtn">Contact Me</a>
+                        <a href="#Experience" class="Btn SecondaryBtn">View Work</a>
+                    </div>
+                </div>
+                <div class="HeroImageContainer">
+                    <div class="ProfileImageWrapper">
+                        <img src="Imgs/Me.jpg" alt="Amir Amgad" class="ProfileImage">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="About" class="Section">
+            <div class="Container">
+                <h2 class="SectionTitle">About Me</h2>
+                <div class="AboutContent">
+                    <div class="AboutText">
+                        <p>I am a <strong>Full Stack Developer</strong> with over 2 years of production experience at
+                            <strong>Saikoro</strong>, where I architected and launched three major educational
+                            platforms. Unlike typical web development, my work focuses on heavy logic: I’ve built
+                            <strong>real-time multiplayer game servers</strong>, automated global scheduling engines,
+                            and secure payment infrastructures from the ground up.
+                        </p>
+                        <p>My core stack includes <strong>React.js, Node.js, PHP, and MySQL</strong>, but my real
+                            strength lies in solving engineering problems—whether that's synchronizing game states
+                            across clients or managing role-based access for thousands of users. Iam always eager to
+                            work in a collaborative environment, learning from experienced professionals while actively
+                            contributing to projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Experience" class="Section">
+            <div class="Container">
+                <h2 class="SectionTitle">Experience</h2>
+                <div class="Timeline">
+                    <!-- Saikoro Experience -->
+                    <div class="TimelineItem">
+                        <div class="TimelineDate">05/2024 - Present</div>
+                        <div class="TimelineContent">
+                            <h3 class="JobTitle">Full Stack Developer</h3>
+                            <h4 class="Company">Saikoro</h4>
+                            <div class="JobDescription">
+                                <ul class="ExperienceList">
+                                    <li><strong>Complex System Architecture:</strong> Architected and delivered robust
+                                        Learning Management Systems (LMS) like <strong>JustAyah</strong> and
+                                        <strong>CopywriterMe</strong>, implementing intricate business logic for
+                                        multi-timezone scheduling (UTC to local), automated recurring payments, and
+                                        strict <strong>Role-Based Access Control (RBAC)</strong>.
+                                    </li>
+                                    <li><strong>Real-Time Engineering:</strong> Engineered <strong>ClassPill</strong>, a
+                                        multiplayer gaming platform utilizing <strong>Socket.io</strong> and
+                                        <strong>Node.js</strong> to manage synchronized game states and
+                                        <strong>Three.js</strong> for immersive 3D graphics, significantly enhancing
+                                        user engagement.
+                                    </li>
+                                    <li><strong>Operational Efficiency:</strong> Designed a dynamic, reusable UI
+                                        component library and a centralized server-side validation system, reducing
+                                        development time and ensuring consistent design and security standards across
+                                        all products.</li>
+                                    <li><strong>Full Lifecycle Development:</strong> Managed the end-to-end development
+                                        lifecycle—from database schema design and API development to frontend
+                                        integration—ensuring timely delivery of high-quality solutions.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="TimelineItem">
+                        <div class="TimelineDate">10/2019 - 09/2023</div>
+                        <div class="TimelineContent">
+                            <h3 class="JobTitle">Bachelor's Degree in Computer Science</h3>
+                            <h4 class="Company">Arab Academy for Science, Technology & Maritime Transport (AASTMT)</h4>
+                            <p class="JobDescription">Focus on Database Management, API Development, and Responsive Web
+                                Design.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Projects" class="Section">
+            <div class="Container">
+                <h2 class="SectionTitle">Featured Projects</h2>
+                <div class="ProjectsGrid">
+                    <div class="ProjectCard">
+                        <h3 class="ProjectTitle">JustAyah (LMS Platform)</h3>
+                        <p class="ProjectDesc">Engineered a multi-tenant LMS with a custom scheduling algorithm handling
+                            global timezone conversions and conflict detection. Implemented granular Role-Based Access
+                            Control (RBAC) and automated recurring billing.</p>
+                        <div class="ProjectTags">
+                            <span class="Tag">PHP</span>
+                            <span class="Tag">MySQL</span>
+                            <span class="Tag">REST API</span>
+                            <span class="Tag">RBAC</span>
+                        </div>
+                    </div>
+                    <div class="ProjectCard">
+                        <h3 class="ProjectTitle">ClassPill (Real-Time Gaming)</h3>
+                        <p class="ProjectDesc">Architected a low-latency websocket server (Socket.io) to synchronize
+                            game states for concurrent users. Integrated Cannon-es for server-side physics validation
+                            and Three.js for immersive WebGL rendering.</p>
+                        <div class="ProjectTags">
+                            <span class="Tag">Node.js</span>
+                            <span class="Tag">Socket.io</span>
+                            <span class="Tag">Three.js</span>
+                            <span class="Tag">Physics Engine</span>
+                        </div>
+                    </div>
+                    <div class="ProjectCard">
+                        <h3 class="ProjectTitle">CopywriterMe (Course Platform)</h3>
+                        <p class="ProjectDesc">Built a secure course platform featuring automated PDF certificate
+                            generation using FPDI. Developed a tamper-proof video progress tracking system to ensure
+                            course completion compliance.</p>
+                        <div class="ProjectTags">
+                            <span class="Tag">PHP</span>
+                            <span class="Tag">Video.js</span>
+                            <span class="Tag">PDF Generation</span>
+                            <span class="Tag">Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Certifications" class="Section">
+            <div class="Container">
+                <h2 class="SectionTitle">Certifications</h2>
+                <div class="Timeline">
+                    <div class="TimelineItem">
+                        <div class="TimelineDate">72 Hours</div>
+                        <div class="TimelineContent">
+                            <h3 class="JobTitle">Developing Web Apps Course</h3>
+                            <h4 class="Company">ITI (Information Technology Institute)</h4>
+                            <p class="JobDescription">Comprehensive training in HTML, CSS, JavaScript, and web
+                                application best practices.</p>
+                        </div>
+                    </div>
+                    <div class="TimelineItem">
+                        <div class="TimelineDate">20 Hours</div>
+                        <div class="TimelineContent">
+                            <h3 class="JobTitle">Flutter Course</h3>
+                            <h4 class="Company">ITI (Information Technology Institute)</h4>
+                            <p class="JobDescription">In-depth training in building natively compiled applications for
+                                mobile, web, and desktop.</p>
+                        </div>
+                    </div>
+                    <div class="TimelineItem">
+                        <div class="TimelineDate">12 Hours</div>
+                        <div class="TimelineContent">
+                            <h3 class="JobTitle">Developing Back-End Apps with Node.js</h3>
+                            <h4 class="Company">IBM</h4>
+                            <p class="JobDescription">Scalable server-side applications using Node.js, Express.js, and
+                                asynchronous programming.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Languages" class="Section">
+            <div class="Container">
+                <h2 class="SectionTitle">Languages</h2>
+                <div class="SkillsGrid">
+                    <div class="SkillCard">
+                        <div class="SkillName">Arabic (Native)</div>
+                    </div>
+                    <div class="SkillCard">
+                        <div class="SkillName">English (Fluent)</div>
+                    </div>
+                    <div class="SkillCard">
+                        <div class="SkillName">German (Beginner)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Skills" class="Section">
+            <div class="Container">
+                <h2 class="SectionTitle">Technical Skills</h2>
+
+                <div class="SkillsWrapper">
+                    <div class="SkillCategory">
+                        <h3 class="SkillCategoryTitle">Frontend Development</h3>
+                        <div class="SkillsGrid">
+                            <div class="SkillCard">
+                                <div class="SkillName">React.js</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">JavaScript (ES6+)</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">HTML5 & CSS3</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Tailwind & Bootstrap</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Three.js</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Video.js</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SkillCategory">
+                        <h3 class="SkillCategoryTitle">Backend Development</h3>
+                        <div class="SkillsGrid">
+                            <div class="SkillCard">
+                                <div class="SkillName">Node.js</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">PHP (7/8+)</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Python (Django)</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Socket.io</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Express.js</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SkillCategory">
+                        <h3 class="SkillCategoryTitle">Database & Architecture</h3>
+                        <div class="SkillsGrid">
+                            <div class="SkillCard">
+                                <div class="SkillName">MySQL & SQL</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Schema Design</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Complex Queries</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SkillCategory">
+                        <h3 class="SkillCategoryTitle">Tools & APIs</h3>
+                        <div class="SkillsGrid">
+                            <div class="SkillCard">
+                                <div class="SkillName">Git & GitHub</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Zoom API</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">PayTabs / Fawateerak</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Composer & npm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <div id="Interests" class="Section">
+            <div class="Container">
+                <h3 class="SectionTitle">Interests/Hobbies</h3>
+
+                <div class="InterestsList">
+                    <span>Technology Trends</span>
+                    <span>Reading</span>
+                    <span>Video Games</span>
+                    <span>Language Learning (German)</span>
+                    <span>Writing</span>
+                </div>
+            </div>
+
+        </div>
+
+        <section id="Contact" class="Section">
+            <div class="Container">
+                <h2 class="SectionTitle">Get In Touch</h2>
+                <form id="ContactForm">
+                    <div class="FormGroup">
+                        <label for="Name" class="FormLabel">Name</label>
+                        <input type="text" id="Name" name="user_name" class="FormInput" placeholder="Your Name"
+                            required>
+                    </div>
+                    <div class="FormGroup">
+                        <label for="Email" class="FormLabel">Email</label>
+                        <input type="email" id="Email" name="user_email" class="FormInput" placeholder="Your Email"
+                            required>
+                    </div>
+                    <div class="FormGroup">
+                        <label for="Message" class="FormLabel">Message</label>
+                        <textarea id="Message" name="message" class="FormInput" rows="5" placeholder="Your Message"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="Btn PrimaryBtn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer id="Footer">
+        <div class="Container">
+            <p>&copy; 2026 Amir Amgad. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Email Status Modal -->
+    <div id="EmailModal" class="Modal Hidden">
+        <div class="ModalContent">
+            <div class="ModalIconWrapper">
+                <!-- Success Icon -->
+                <svg id="SuccessIcon" class="StatusIcon Hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <!-- Error Icon -->
+                <svg id="ErrorIcon" class="StatusIcon Hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+            </div>
+            <h3 id="ModalTitle">Message Sent!</h3>
+            <p id="ModalMessage">Thanks for reaching out. I'll get back to you shortly.</p>
+            <button id="CloseModal" class="Btn PrimaryBtn">Close</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
