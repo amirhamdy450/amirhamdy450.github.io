@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Amir Amgad | Full Stack Developer</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,16 +35,22 @@
 
     <header id="MainHeader">
         <nav id="NavBar">
-            <div id="Logo">Portfolio.</div>
+            <a id="Logo" href="#Hero" aria-label="Amir Amgad home">Amir.</a>
             <ul id="NavLinks">
                 <li><a href="#Hero" class="NavLink">Home</a></li>
                 <li><a href="#About" class="NavLink">About</a></li>
                 <li><a href="#Experience" class="NavLink">Experience</a></li>
+                <li><a href="#Projects" class="NavLink">Projects</a></li>
                 <li><a href="#Skills" class="NavLink">Skills</a></li>
                 <li><a href="#Contact" class="NavLink">Contact</a></li>
             </ul>
-            <button id="ThemeToggle" class="Btn">
-                <span class="Icon">☀</span>
+            <button id="ThemeToggle" class="IconBtn" type="button" aria-label="Toggle color theme">
+                <span class="Icon" aria-hidden="true">&#9728;</span>
+            </button>
+            <button id="MenuToggle" class="IconBtn" type="button" aria-label="Open navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </nav>
     </header>
@@ -53,13 +59,47 @@
         <section id="Hero" class="Section">
             <div class="Container">
                 <div class="HeroContent">
+                    <p class="Eyebrow">Available for full-stack web roles</p>
                     <h1 class="HeroTitle">Hello, I'm <span class="Highlight">Amir Amgad</span></h1>
-                    <h2 class="HeroSubtitle">Full Stack Web Developer</h2>
-                    <p class="HeroDescription">A passionate Full Stack Developer specializing in modern web
-                        technologies. Eager to build dynamic, responsive, and scalable web applications.</p>
-                    <div class="HeroButtons">
-                        <a href="#Contact" class="Btn PrimaryBtn">Contact Me</a>
-                        <a href="#Experience" class="Btn SecondaryBtn">View Work</a>
+                    <h2 class="HeroSubtitle">Full Stack Engineer</h2>
+                    <p class="HeroDescription">Full Stack Engineer with 2+ years of professional experience building
+                        dynamic, responsive, and scalable web applications across EdTech platforms, realtime systems,
+                        and full-stack product workflows.</p>
+                    <div class="HeroActions">
+                        <div class="HeroButtons">
+                            <a href="#Contact" class="Btn PrimaryBtn">Contact Me</a>
+                            <a href="#Experience" class="Btn SecondaryBtn">View Work</a>
+                        </div>
+                        <div class="SocialLinks" aria-label="Profile links">
+                            <a class="SocialLink SocialLinkLinkedIn"
+                                href="https://www.linkedin.com/in/amir-amgad-9b1636116/" target="_blank"
+                                rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
+                                <span class="LinkedInMark" aria-hidden="true">in</span>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a class="SocialLink SocialLinkGitHub" href="https://github.com/amirhamdy450" target="_blank"
+                                rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56v-2.16c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18A10.9 10.9 0 0 1 12 6.06c.98 0 1.95.13 2.87.39 2.18-1.49 3.14-1.18 3.14-1.18.63 1.58.23 2.75.12 3.04.73.8 1.17 1.83 1.17 3.08 0 4.42-2.69 5.38-5.25 5.67.41.35.77 1.04.77 2.1v3.21c0 .31.21.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="HeroStats" aria-label="Professional highlights">
+                        <div>
+                            <strong>2+</strong>
+                            <span>Years production work</span>
+                        </div>
+                        <div>
+                            <strong>3</strong>
+                            <span>Major platforms shipped</span>
+                        </div>
+                        <div>
+                            <strong>Full</strong>
+                            <span>Frontend to backend delivery</span>
+                        </div>
                     </div>
                 </div>
                 <div class="HeroImageContainer">
@@ -75,17 +115,33 @@
                 <h2 class="SectionTitle">About Me</h2>
                 <div class="AboutContent">
                     <div class="AboutText">
-                        <p>I am a <strong>Full Stack Developer</strong> with over 2 years of production experience at
+                        <p>I am a <strong>Full Stack Engineer</strong> with over 2 years of production experience at
                             <strong>Saikoro</strong>, where I architected and launched three major educational
-                            platforms. Unlike typical web development, my work focuses on heavy logic: I’ve built
+                            platforms. Unlike typical web development, my work focuses on heavy logic: I've built
                             <strong>real-time multiplayer game servers</strong>, automated global scheduling engines,
-                            and secure payment infrastructures from the ground up.
+                            secure payment flows, and role-based product infrastructures from the ground up.
                         </p>
                         <p>My core stack includes <strong>React.js, Node.js, PHP, and MySQL</strong>, but my real
-                            strength lies in solving engineering problems—whether that's synchronizing game states
-                            across clients or managing role-based access for thousands of users. Iam always eager to
-                            work in a collaborative environment, learning from experienced professionals while actively
-                            contributing to projects.</p>
+                            strength lies in solving engineering problems - whether that's synchronizing game states
+                            across clients, designing relational database schemas, integrating third-party APIs, or
+                            managing access control for thousands of users.</p>
+                    </div>
+                    <div class="AboutHighlights" aria-label="Core strengths">
+                        <div class="AboutHighlight">
+                            <span>01</span>
+                            <strong>Systems thinking</strong>
+                            <p>Scheduling, payments, RBAC, and workflows designed around real product constraints.</p>
+                        </div>
+                        <div class="AboutHighlight">
+                            <span>02</span>
+                            <strong>Realtime engineering</strong>
+                            <p>Socket-driven game states, server-side validation, and interactive 3D experiences.</p>
+                        </div>
+                        <div class="AboutHighlight">
+                            <span>03</span>
+                            <strong>Product delivery</strong>
+                            <p>Database design, APIs, frontend integration, and reusable UI patterns.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,12 +160,18 @@
                             <div class="JobDescription">
                                 <ul class="ExperienceList">
                                     <li><strong>Complex System Architecture:</strong> Architected and delivered robust
-                                        Learning Management Systems (LMS) like <strong>JustAyah</strong> and
-                                        <strong>CopywriterMe</strong>, implementing intricate business logic for
+                                        Learning Management Systems (LMS) like
+                                        <a href="https://justayah.com/" class="InlineLink" target="_blank"
+                                            rel="noopener noreferrer"><strong>JustAyah</strong></a> and
+                                        <a href="https://copywriterme.com/" class="InlineLink" target="_blank"
+                                            rel="noopener noreferrer"><strong>CopywriterMe</strong></a>, implementing
+                                        intricate business logic for
                                         multi-timezone scheduling (UTC to local), automated recurring payments, and
                                         strict <strong>Role-Based Access Control (RBAC)</strong>.
                                     </li>
-                                    <li><strong>Real-Time Engineering:</strong> Engineered <strong>ClassPill</strong>, a
+                                    <li><strong>Real-Time Engineering:</strong> Engineered
+                                        <a href="https://www.classpill.com/Home.php" class="InlineLink" target="_blank"
+                                            rel="noopener noreferrer"><strong>ClassPill</strong></a>, a
                                         multiplayer gaming platform utilizing <strong>Socket.io</strong> and
                                         <strong>Node.js</strong> to manage synchronized game states and
                                         <strong>Three.js</strong> for immersive 3D graphics, significantly enhancing
@@ -120,8 +182,8 @@
                                         development time and ensuring consistent design and security standards across
                                         all products.</li>
                                     <li><strong>Full Lifecycle Development:</strong> Managed the end-to-end development
-                                        lifecycle—from database schema design and API development to frontend
-                                        integration—ensuring timely delivery of high-quality solutions.</li>
+                                        lifecycle - from database schema design and API development to frontend
+                                        integration - ensuring timely delivery of high-quality solutions.</li>
                                 </ul>
                             </div>
                         </div>
@@ -133,8 +195,8 @@
                         <div class="TimelineContent">
                             <h3 class="JobTitle">Bachelor's Degree in Computer Science</h3>
                             <h4 class="Company">Arab Academy for Science, Technology & Maritime Transport (AASTMT)</h4>
-                            <p class="JobDescription">Focus on Database Management, API Development, and Responsive Web
-                                Design.</p>
+                            <p class="JobDescription">Focus on Web Engineering, Database Systems, API Development,
+                                Algorithms, and Object-Oriented Design.</p>
                         </div>
                     </div>
                 </div>
@@ -146,22 +208,25 @@
                 <h2 class="SectionTitle">Featured Projects</h2>
                 <div class="ProjectsGrid">
                     <div class="ProjectCard">
-                        <h3 class="ProjectTitle">JustAyah (LMS Platform)</h3>
-                        <p class="ProjectDesc">Engineered a multi-tenant LMS with a custom scheduling algorithm handling
-                            global timezone conversions and conflict detection. Implemented granular Role-Based Access
-                            Control (RBAC) and automated recurring billing.</p>
+                        <h3 class="ProjectTitle"><a href="https://justayah.com/" target="_blank"
+                                rel="noopener noreferrer">JustAyah (LMS Platform)</a></h3>
+                        <p class="ProjectDesc">Engineered a multi-tenant LMS with custom UTC-to-local scheduling,
+                            availability management, granular RBAC, secure validation, Zoom meeting integration, and
+                            Fawateerak payment processing.</p>
                         <div class="ProjectTags">
                             <span class="Tag">PHP</span>
                             <span class="Tag">MySQL</span>
-                            <span class="Tag">REST API</span>
+                            <span class="Tag">Zoom API</span>
+                            <span class="Tag">Fawateerak</span>
                             <span class="Tag">RBAC</span>
                         </div>
                     </div>
                     <div class="ProjectCard">
-                        <h3 class="ProjectTitle">ClassPill (Real-Time Gaming)</h3>
-                        <p class="ProjectDesc">Architected a low-latency websocket server (Socket.io) to synchronize
-                            game states for concurrent users. Integrated Cannon-es for server-side physics validation
-                            and Three.js for immersive WebGL rendering.</p>
+                        <h3 class="ProjectTitle"><a href="https://www.classpill.com/Home.php" target="_blank"
+                                rel="noopener noreferrer">ClassPill (Real-Time Gaming)</a></h3>
+                        <p class="ProjectDesc">Architected a low-latency websocket server with Socket.io to synchronize
+                            game states for concurrent users, using Node.js, JavaScript, Three.js, and browser-rendered
+                            3D graphics for interactive learning.</p>
                         <div class="ProjectTags">
                             <span class="Tag">Node.js</span>
                             <span class="Tag">Socket.io</span>
@@ -170,15 +235,55 @@
                         </div>
                     </div>
                     <div class="ProjectCard">
-                        <h3 class="ProjectTitle">CopywriterMe (Course Platform)</h3>
-                        <p class="ProjectDesc">Built a secure course platform featuring automated PDF certificate
-                            generation using FPDI. Developed a tamper-proof video progress tracking system to ensure
-                            course completion compliance.</p>
+                        <h3 class="ProjectTitle"><a href="https://copywriterme.com/" target="_blank"
+                                rel="noopener noreferrer">CopywriterMe (Course Platform)</a></h3>
+                        <p class="ProjectDesc">Built a secure content delivery platform with automated admin workflows,
+                            dynamic PDF certificates and invoices, reusable UI components, and video progress tracking
+                            for course completion compliance.</p>
                         <div class="ProjectTags">
                             <span class="Tag">PHP</span>
                             <span class="Tag">Video.js</span>
-                            <span class="Tag">PDF Generation</span>
+                            <span class="Tag">mPDF</span>
                             <span class="Tag">Security</span>
+                        </div>
+                    </div>
+                    <div class="ProjectCard">
+                        <h3 class="ProjectTitle"><a href="https://www.deaf-gain.com/" target="_blank"
+                                rel="noopener noreferrer">DeafGain (Accessibility Platform)</a></h3>
+                        <p class="ProjectDesc">Developed a specialized video interface using JavaScript, Video.js, and
+                            the YouTube API for the deaf community, with a focus on high-contrast UI and accessible
+                            media controls.</p>
+                        <div class="ProjectTags">
+                            <span class="Tag">JavaScript</span>
+                            <span class="Tag">Video.js</span>
+                            <span class="Tag">YouTube API</span>
+                            <span class="Tag">Accessibility</span>
+                        </div>
+                    </div>
+                    <div class="ProjectCard">
+                        <h3 class="ProjectTitle"><a href="https://github.com/amirhamdy450/Resume.analyze"
+                                target="_blank" rel="noopener noreferrer">Resume Analyze (AI ATS Analyzer)</a></h3>
+                        <p class="ProjectDesc">Built a full-stack ATS resume analyzer with React 19, TypeScript, React
+                            Router v7 SSR, Tailwind CSS, pdfjs-dist processing, Zustand state management, and structured
+                            AI feedback scores.</p>
+                        <div class="ProjectTags">
+                            <span class="Tag">React 19</span>
+                            <span class="Tag">TypeScript</span>
+                            <span class="Tag">SSR</span>
+                            <span class="Tag">AI Feedback</span>
+                        </div>
+                    </div>
+                    <div class="ProjectCard">
+                        <h3 class="ProjectTitle"><a href="https://github.com/amirhamdy450/Commune" target="_blank"
+                                rel="noopener noreferrer">Commune (Full-Stack Social Platform)</a></h3>
+                        <p class="ProjectDesc">Architected a frameworkless PHP/MySQL social platform with authenticated
+                            users, ranked feeds, media posts, comments, follows, saved posts, search, organizations,
+                            notifications, and admin moderation.</p>
+                        <div class="ProjectTags">
+                            <span class="Tag">PHP</span>
+                            <span class="Tag">MySQL</span>
+                            <span class="Tag">Security</span>
+                            <span class="Tag">ES Modules</span>
                         </div>
                     </div>
                 </div>
@@ -220,23 +325,6 @@
             </div>
         </section>
 
-        <section id="Languages" class="Section">
-            <div class="Container">
-                <h2 class="SectionTitle">Languages</h2>
-                <div class="SkillsGrid">
-                    <div class="SkillCard">
-                        <div class="SkillName">Arabic (Native)</div>
-                    </div>
-                    <div class="SkillCard">
-                        <div class="SkillName">English (Fluent)</div>
-                    </div>
-                    <div class="SkillCard">
-                        <div class="SkillName">German (Beginner)</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="Skills" class="Section">
             <div class="Container">
                 <h2 class="SectionTitle">Technical Skills</h2>
@@ -256,6 +344,15 @@
                             </div>
                             <div class="SkillCard">
                                 <div class="SkillName">Tailwind & Bootstrap</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">jQuery & AJAX</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Responsive Web Design</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Cross-Browser Compatibility</div>
                             </div>
                             <div class="SkillCard">
                                 <div class="SkillName">Three.js</div>
@@ -284,6 +381,12 @@
                             <div class="SkillCard">
                                 <div class="SkillName">Express.js</div>
                             </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">RESTful API Development</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Server-Side Architecture</div>
+                            </div>
                         </div>
                     </div>
 
@@ -294,10 +397,16 @@
                                 <div class="SkillName">MySQL & SQL</div>
                             </div>
                             <div class="SkillCard">
+                                <div class="SkillName">PostgreSQL</div>
+                            </div>
+                            <div class="SkillCard">
                                 <div class="SkillName">Schema Design</div>
                             </div>
                             <div class="SkillCard">
                                 <div class="SkillName">Complex Queries</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">RDBMS Optimization</div>
                             </div>
                         </div>
                     </div>
@@ -314,49 +423,113 @@
                             <div class="SkillCard">
                                 <div class="SkillName">Composer & npm</div>
                             </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Postman</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Unit Testing</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">MVC & OOP</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Vite & SSR</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Zustand</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">pdfjs-dist</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="SkillCategory">
+                        <h3 class="SkillCategoryTitle">Professional Strengths</h3>
+                        <div class="SkillsGrid">
+                            <div class="SkillCard">
+                                <div class="SkillName">Analytical Problem Solving</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Communication</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Team Collaboration</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Adaptability</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">Time Management</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
         </section>
 
-        <div id="Interests" class="Section">
+        <section id="Additional" class="Section CompactSection">
             <div class="Container">
-                <h3 class="SectionTitle">Interests/Hobbies</h3>
-
-                <div class="InterestsList">
-                    <span>Technology Trends</span>
-                    <span>Reading</span>
-                    <span>Video Games</span>
-                    <span>Language Learning (German)</span>
-                    <span>Writing</span>
+                <h2 class="SectionTitle">Additional Details</h2>
+                <div class="AdditionalGrid">
+                    <div class="AdditionalBlock">
+                        <h3 class="SkillCategoryTitle">Languages</h3>
+                        <div class="SkillsGrid">
+                            <div class="SkillCard">
+                                <div class="SkillName">Arabic (Native)</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">English (Fluent)</div>
+                            </div>
+                            <div class="SkillCard">
+                                <div class="SkillName">German (Beginner)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="AdditionalBlock">
+                        <h3 class="SkillCategoryTitle">Interests & Hobbies</h3>
+                        <div class="InterestsList">
+                            <span>Technology Trends</span>
+                            <span>System Architecture</span>
+                            <span>Reading</span>
+                            <span>Video Games</span>
+                            <span>Language Learning (German)</span>
+                            <span>Guitar</span>
+                            <span>Writing</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
+        </section>
 
         <section id="Contact" class="Section">
             <div class="Container">
                 <h2 class="SectionTitle">Get In Touch</h2>
-                <form id="ContactForm">
-                    <div class="FormGroup">
-                        <label for="Name" class="FormLabel">Name</label>
-                        <input type="text" id="Name" name="user_name" class="FormInput" placeholder="Your Name"
-                            required>
+                <div class="ContactPanel">
+                    <div class="ContactIntro">
+                        <p class="Eyebrow">Let's build something reliable</p>
+                        <h3>Have a role, freelance task, or technical problem?</h3>
+                        <p>Send the details and I will reply with next steps. I am strongest where frontend polish,
+                            backend logic, and database structure meet.</p>
                     </div>
-                    <div class="FormGroup">
-                        <label for="Email" class="FormLabel">Email</label>
-                        <input type="email" id="Email" name="user_email" class="FormInput" placeholder="Your Email"
-                            required>
-                    </div>
-                    <div class="FormGroup">
-                        <label for="Message" class="FormLabel">Message</label>
-                        <textarea id="Message" name="message" class="FormInput" rows="5" placeholder="Your Message"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="Btn PrimaryBtn">Send Message</button>
-                </form>
+                    <form id="ContactForm">
+                        <div class="FormGroup">
+                            <label for="Name" class="FormLabel">Name</label>
+                            <input type="text" id="Name" name="user_name" class="FormInput" placeholder="Your Name"
+                                required>
+                        </div>
+                        <div class="FormGroup">
+                            <label for="Email" class="FormLabel">Email</label>
+                            <input type="email" id="Email" name="user_email" class="FormInput" placeholder="Your Email"
+                                required>
+                        </div>
+                        <div class="FormGroup">
+                            <label for="Message" class="FormLabel">Message</label>
+                            <textarea id="Message" name="message" class="FormInput" rows="5" placeholder="Your Message"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="Btn PrimaryBtn">Send Message</button>
+                    </form>
+                </div>
             </div>
         </section>
 

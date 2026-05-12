@@ -1,139 +1,161 @@
-
-// Theme Toggle 
 const ThemeToggle = document.getElementById('ThemeToggle');
+const ThemeIcon = ThemeToggle?.querySelector('.Icon');
+const MenuToggle = document.getElementById('MenuToggle');
 const Body = document.body;
+const Sections = document.querySelectorAll('.Section');
+const NavAnchors = document.querySelectorAll('.NavLink');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Check for saved user preference
-const SavedTheme = localStorage.getItem('theme');
-if (SavedTheme) {
+function setTheme(theme) {
     Body.classList.remove('DarkTheme', 'LightTheme');
-    Body.classList.add(SavedTheme);
+    Body.classList.add(theme);
+    localStorage.setItem('theme', theme);
+
+    if (ThemeIcon) {
+        ThemeIcon.innerHTML = theme === 'DarkTheme' ? '&#9728;' : '&#9790;';
+    }
+
+    ThemeToggle?.setAttribute('aria-label', theme === 'DarkTheme' ? 'Switch to light theme' : 'Switch to dark theme');
 }
 
-ThemeToggle.addEventListener('click', () => {
-    if (Body.classList.contains('DarkTheme')) {
-        Body.classList.replace('DarkTheme', 'LightTheme');
-        localStorage.setItem('theme', 'LightTheme');
-    } else {
-        Body.classList.replace('LightTheme', 'DarkTheme');
-        localStorage.setItem('theme', 'DarkTheme');
-    }
+setTheme(localStorage.getItem('theme') || 'DarkTheme');
+
+ThemeToggle?.addEventListener('click', () => {
+    setTheme(Body.classList.contains('DarkTheme') ? 'LightTheme' : 'DarkTheme');
 });
 
-// Scroll Animations (Simple Event Listener)
-const Sections = document.querySelectorAll('.Section');
+MenuToggle?.addEventListener('click', () => {
+    const isOpen = Body.classList.toggle('MenuOpen');
+    MenuToggle.setAttribute('aria-expanded', String(isOpen));
+});
 
-// Add .Hidden class initially
-Sections.forEach(el => el.classList.add('Hidden'));
+NavAnchors.forEach(anchor => {
+    anchor.addEventListener('click', () => {
+        Body.classList.remove('MenuOpen');
+        MenuToggle?.setAttribute('aria-expanded', 'false');
+    });
+});
 
-function checkScroll() {
-    const TriggerBottom = window.innerHeight * 0.8; // Show when element is 80% visible
-
-    Sections.forEach(section => {
-        const SectionTop = section.getBoundingClientRect().top;
-
-        if (SectionTop < TriggerBottom) {
-            section.classList.add('Show');
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('Show');
+            revealObserver.unobserve(entry.target);
         }
     });
-}
+}, { threshold: 0.18 });
 
-// Initial check for elements already in view
-checkScroll();
+Sections.forEach((section, index) => {
+    section.classList.add('Hidden');
+    section.style.setProperty('--RevealDelay', `${Math.min(index, 4) * 45}ms`);
+    revealObserver.observe(section);
+});
 
-// Listen for scroll events
-window.addEventListener('scroll', checkScroll);
+const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+            return;
+        }
 
-// Typing Text Effect for Hero Subtitle
-const TypeText = ["Full Stack Developer", "Dynamic Solutions", "Problem Solver", "Creative Thinker"];
+        NavAnchors.forEach(anchor => {
+            anchor.classList.toggle('Active', anchor.getAttribute('href') === `#${entry.target.id}`);
+        });
+    });
+}, {
+    rootMargin: '-42% 0px -50% 0px',
+    threshold: 0
+});
+
+Sections.forEach(section => navObserver.observe(section));
+
+const TypeText = ['Full Stack Engineer', 'Realtime Systems Builder', 'Problem Solver', 'Product-Minded Engineer'];
 const HeroSubtitle = document.querySelector('.HeroSubtitle');
 let TextIndex = 0;
 let CharIndex = 0;
 let IsDeleting = false;
 
-function Type() {
-    const CurrentText = TypeText[TextIndex];
-    if (IsDeleting) {
-        HeroSubtitle.textContent = CurrentText.substring(0, CharIndex - 1);
-        CharIndex--;
-    } else {
-        HeroSubtitle.textContent = CurrentText.substring(0, CharIndex + 1);
-        CharIndex++;
+function typeHeroText() {
+    if (!HeroSubtitle || prefersReducedMotion) {
+        return;
     }
 
+    const currentText = TypeText[TextIndex];
+    HeroSubtitle.textContent = IsDeleting
+        ? currentText.substring(0, CharIndex - 1)
+        : currentText.substring(0, CharIndex + 1);
+
+    CharIndex += IsDeleting ? -1 : 1;
     HeroSubtitle.classList.add('TypingCursor');
 
-    if (!IsDeleting && CharIndex === CurrentText.length) {
+    if (!IsDeleting && CharIndex === currentText.length) {
         IsDeleting = true;
-        setTimeout(Type, 2000); // Pause at end
-    } else if (IsDeleting && CharIndex === 0) {
+        setTimeout(typeHeroText, 1600);
+        return;
+    }
+
+    if (IsDeleting && CharIndex === 0) {
         IsDeleting = false;
         TextIndex = (TextIndex + 1) % TypeText.length;
-        setTimeout(Type, 500); // Pause before new word
-    } else {
-        setTimeout(Type, IsDeleting ? 100 : 200); // Typing speed
+        setTimeout(typeHeroText, 420);
+        return;
     }
+
+    setTimeout(typeHeroText, IsDeleting ? 60 : 105);
 }
 
-// Start typing on load
-document.addEventListener('DOMContentLoaded', Type);
+typeHeroText();
 
-// EmailJS Configuration
-(function () {
-    // Initialize EmailJS with your Public Key
-    emailjs.init("tw6lznwmEtZe_Dw2j");
-})();
+if (window.emailjs) {
+    emailjs.init('tw6lznwmEtZe_Dw2j');
+}
 
-document.getElementById('ContactForm').addEventListener('submit', function (event) {
+const ContactForm = document.getElementById('ContactForm');
+
+ContactForm?.addEventListener('submit', function (event) {
     event.preventDefault();
 
     const btn = this.querySelector('button');
     const originalText = btn.innerText;
     btn.innerText = 'Sending...';
+    btn.disabled = true;
 
-    // Get input values
     const userName = document.getElementById('Name').value;
     const userEmail = document.getElementById('Email').value;
     const userMessage = document.getElementById('Message').value;
-
-    // Keys
     const serviceID = 'service_3cqq8xk';
     const templateID = 'template_mesblie';
-
-    // Construct params - Appending email to message body
     const templateParams = {
-        name: userName, // Mapped to {{name}} in EmailJS template
+        name: userName,
         user_name: userName,
         user_email: userEmail,
-        // Hack to ensure email is in body even if template ignores user_email field
         message: `${userMessage}\n\n----------------\nSender Email: ${userEmail}`
     };
+
+    const resetButton = (text = originalText) => {
+        btn.innerText = text;
+        btn.disabled = false;
+    };
+
+    if (!window.emailjs) {
+        resetButton();
+        openMailFallback(userName, userEmail, userMessage);
+        return;
+    }
 
     emailjs.send(serviceID, templateID, templateParams)
         .then(() => {
             btn.innerText = 'Sent!';
-            showModal(true, "Message Sent!", "Thanks for reaching out! I'll get back to you shortly.");
+            showModal(true, 'Message Sent!', "Thanks for reaching out. I'll get back to you shortly.");
             this.reset();
-            setTimeout(() => { btn.innerText = originalText; }, 3000);
-        }, (err) => {
-            btn.innerText = originalText;
+            setTimeout(() => resetButton(), 3000);
+        })
+        .catch(err => {
             console.error('EmailJS Error:', err);
-
-            // Fallback Strategy
-            showModal(false, "Redirecting...", "Email service busy. Opening your default mail client...");
-
-            // Construct Mailto Link
-            const destEmail = "amirhamdy450@gmail.com";
-            const subject = `Portfolio Contact: ${userName}`;
-            const body = `Name: ${userName}\nEmail: ${userEmail}\n\nMessage:\n${userMessage}`;
-
-            setTimeout(() => {
-                window.location.href = `mailto:${destEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            }, 1500);
+            resetButton();
+            openMailFallback(userName, userEmail, userMessage);
         });
 });
 
-// Modal Logic
 const Modal = document.getElementById('EmailModal');
 const ModalTitle = document.getElementById('ModalTitle');
 const ModalMessage = document.getElementById('ModalMessage');
@@ -144,8 +166,6 @@ const CloseModalBtn = document.getElementById('CloseModal');
 function showModal(isSuccess, title, message) {
     ModalTitle.textContent = title;
     ModalMessage.textContent = message;
-
-    // Reset Icons
     SuccessIcon.classList.remove('Active');
     ErrorIcon.classList.remove('Active');
 
@@ -154,20 +174,41 @@ function showModal(isSuccess, title, message) {
         ModalTitle.style.color = 'var(--AccentColor)';
     } else {
         ErrorIcon.classList.add('Active');
-        ModalTitle.style.color = '#ff4d4d'; // Error Red
+        ModalTitle.style.color = '#ff5d5d';
     }
 
     Modal.classList.add('Active');
     Modal.classList.remove('Hidden');
 }
 
-CloseModalBtn.addEventListener('click', () => {
+function openMailFallback(userName, userEmail, userMessage) {
+    showModal(false, 'Redirecting...', 'Email service is busy. Opening your default mail client...');
+
+    const destEmail = 'amirhamdy450@gmail.com';
+    const subject = `Portfolio Contact: ${userName}`;
+    const body = `Name: ${userName}\nEmail: ${userEmail}\n\nMessage:\n${userMessage}`;
+
+    setTimeout(() => {
+        window.location.href = `mailto:${destEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }, 1200);
+}
+
+function closeModal() {
     Modal.classList.remove('Active');
+}
+
+CloseModalBtn?.addEventListener('click', closeModal);
+
+Modal?.addEventListener('click', event => {
+    if (event.target === Modal) {
+        closeModal();
+    }
 });
 
-// Close on outside click
-Modal.addEventListener('click', (e) => {
-    if (e.target === Modal) {
-        Modal.classList.remove('Active');
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+        Body.classList.remove('MenuOpen');
+        MenuToggle?.setAttribute('aria-expanded', 'false');
+        closeModal();
     }
 });
